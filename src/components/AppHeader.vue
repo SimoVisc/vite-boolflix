@@ -15,7 +15,6 @@
         <input 
         type="text"  
         placeholder="Search in Boolflix"
-        v-model="store.text"
         />
         <button type="submit" >Search</button>
       </div>

@@ -16,17 +16,29 @@ export default {
         store,
       }
     },
-};
-  axios.get("https://api.themoviedb.org/3/movie/550", {
-    params: {
-      api_key: "e28dd805ab0473696d4e9566a68c3d6e",
-      query: this.store.text
-   },
- })
+  mounted(){
+    axios.get("https://api.themoviedb.org/3/movie/", {
+      params: {
+        api_key: "e28dd805ab0473696d4e9566a68c3d6e",
+        query: ""
+    },
+  })
   .then((res) => {
-    console.log(res)
+    this.store.movies = res.data
+  })
+  },
+  mounted(){
+    axios.get("https://api.themoviedb.org/3/search/tv", {
+      params: {
+        api_key: "e28dd805ab0473696d4e9566a68c3d6e",
+        query: ""
+    },
+  })
+  .then((res) => {
+    this.store.series = res.data
   });
-
+}
+}
   
 
 </script>
