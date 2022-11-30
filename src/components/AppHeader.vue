@@ -1,14 +1,14 @@
 <script>
-    import { store } from "../store.js";
+  import { store } from "../store.js";
     
-    export default {
-        name: "AppHeader",
-        data() {
-          return {
-            store,
-          }
-        },
-    }
+  export default {
+   name: "AppHeader",
+   data() {
+      return {
+        store,
+      }
+    },
+  }
 </script>
  
 <template>
@@ -21,7 +21,7 @@
         placeholder="Search in Boolflix"
         v-model="store.text"
         />
-        <button type="submit">Search</button>
+        <button type="submit" >Search</button>
       </div>
     </form>
  </header>

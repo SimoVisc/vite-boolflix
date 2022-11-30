@@ -1,20 +1,24 @@
 <script>
-    import axios from "axios";
+    
     export default {
     name: "AppMain",
     components: {
     },
-    created(){
-        axios.get("https://api.themoviedb.org/3/movie/550?api_key=e28dd805ab0473696d4e9566a68c3d6e").then((res)=>{
-            console.log(res.data)
-        })
-   }
 }
 </script>
 
 <template>
     <main>
-      
+     <section class="movies-container">
+         <ul>
+             <li v-for="movie in store.movies" >{{movie.title}}</li>
+          </ul>
+     </section>
+     <section class="series-container">
+         <ul>
+             <li v-for="serie in store.series" >{{serie.title}}</li>
+          </ul>
+     </section>
    </main>
 </template>
 
