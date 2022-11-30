@@ -1,8 +1,13 @@
 <script>
-    
+    import { store } from "../store";
     export default {
     name: "AppMain",
     components: {
+    },
+    data() {
+      return {
+        store,
+      }
     },
 }
 </script>
