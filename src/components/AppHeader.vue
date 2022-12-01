@@ -1,25 +1,27 @@
 <script>
-  
+  import { store } from "../store";
     
   export default {
    name: "AppHeader",
-   
+  data() {
+      return {
+        store,
+      }
+    }
   }
 </script>
  
 <template>
-  <header >
     <h1>boolflix</h1>
     <form class="search-bar">
-      <div>
-        <input 
-        type="text"  
-        placeholder="Search in Boolflix"
-        />
-        <button type="submit" >Search</button>
-      </div>
+      <input 
+      type="text"  
+      placeholder="Search in Boolflix" 
+      v-model= "store.text"
+      required
+      />
+      <button @click="$emit('performSearch')">Search</button>
     </form>
- </header>
 </template>
 
 <style lang="scss" scoped>

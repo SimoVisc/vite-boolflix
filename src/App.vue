@@ -16,35 +16,38 @@ export default {
         store,
       }
     },
-  mounted(){
-    axios.get("https://api.themoviedb.org/3/movie/", {
+  methods:{
+    getData(){
+    axios.get("https://api.themoviedb.org/3/search/movie", {
       params: {
         api_key: "e28dd805ab0473696d4e9566a68c3d6e",
-        query: ""
+        query: this.store.text,
+        language: "it-IT"
+      },
+    })
+    .then((res) => {
+      this.store.movies = res.data.results
+    })
     },
-  })
-  .then((res) => {
-    this.store.movies = res.data
-  })
-  },
-  mounted(){
-    axios.get("https://api.themoviedb.org/3/search/tv", {
-      params: {
-        api_key: "e28dd805ab0473696d4e9566a68c3d6e",
-        query: ""
-    },
-  })
-  .then((res) => {
-    this.store.series = res.data
-  });
-}
-}
-  
-
+  // getData(){
+  //   axios.get("https://api.themoviedb.org/3/search/tv", {
+  //     params: {
+  //       api_key: "e28dd805ab0473696d4e9566a68c3d6e",
+  //       query: this.store.text,
+  //       language: "it-IT"
+  //   },
+  //   })
+  //   .then((res) => {
+  //     console.log(res)
+    //   this.store.series = res.data.results
+    // })
+    // .catch((err) =>{
+  }
+  }
 </script>
 
 <template>
-    <AppHeader/>
+    <AppHeader  @performSearch= "getData"/>
     <AppMain/>
     <AppFooter/>
 </template>
