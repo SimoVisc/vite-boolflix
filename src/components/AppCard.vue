@@ -12,8 +12,11 @@
             return "kr";
           } else return lang;
         },
+        vote(info) {
+        return Math.ceil(info.vote_average / 2);
+        }
     }
-   }
+    }
 </script>
 
 <template>
@@ -22,7 +25,10 @@
         <li>{{ info.title}}</li>
         <li>{{ info.original_title}}</li>
         <li><span :class="`fi fi-${getFlag(info.original_language)}`"></span></li>
-        <li>{{ info.vote_average}}</li>
+        <li>
+            <i class="fa-solid fa-star" v-for="n in vote(info)"></i>
+            <i class="fa-regular fa-star" v-for="n in (5 - vote(info))"></i>        
+        </li>
     </ul>
 </template>
 
